@@ -18,7 +18,18 @@ export function UsageDisplay() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!user) return
+    if (!user) {
+      // Set default usage for non-authenticated users
+      const defaultUsage: UsageData = {
+        limit: 3,
+        used: 0,
+        remaining: 3,
+        resetTime: new Date(new Date().setHours(24, 0, 0, 0)).toISOString()
+      }
+      setUsage(defaultUsage)
+      setLoading(false)
+      return
+    }
 
     const fetchUsage = async () => {
       try {
@@ -37,7 +48,7 @@ export function UsageDisplay() {
     fetchUsage()
   }, [user])
 
-  if (!user || loading || !usage) {
+  if (loading || !usage) {
     return null
   }
 
@@ -66,6 +77,12 @@ export function UsageDisplay() {
             />
           </div>
         </div>
+
+        {!user && (
+          <div className="text-xs text-muted-foreground bg-muted/50 rounded px-2 py-1">
+            <a href="/signup" className="hover:text-accent transition-colors">Sign up for more</a>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">

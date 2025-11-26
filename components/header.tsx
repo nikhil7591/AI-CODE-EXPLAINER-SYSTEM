@@ -1,17 +1,19 @@
 "use client"
 
 import { useState } from "react"
-import { Brain, Github, Moon, Sun, Menu, X, BookOpen, Info, Sparkles, LogOut, User } from "lucide-react"
+import { Brain, Github, Moon, Sun, Menu, X, BookOpen, Info, Sparkles, LogOut, User, LogIn, UserCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useUser } from "@/contexts/user-context"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useRouter } from "next/navigation"
 
 export function Header() {
   const { theme, setTheme } = useTheme()
   const { user, logout } = useUser()
+  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [featuresOpen, setFeaturesOpen] = useState(false)
   const [docsOpen, setDocsOpen] = useState(false)
@@ -92,8 +94,8 @@ export function Header() {
                 <span className="hidden sm:inline text-xs">Source</span>
               </Button>
 
-              {/* User Menu */}
-              {user && (
+              {/* User Menu or Auth Buttons */}
+              {user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
@@ -111,12 +113,35 @@ export function Header() {
                       <div className="text-muted-foreground text-xs">{user.email}</div>
                     </div>
                     <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => router.push("/profile")} className="gap-2">
+                      <UserCircle className="w-4 h-4" />
+                      <span>Profile</span>
+                    </DropdownMenuItem>
                     <DropdownMenuItem onClick={logout} className="gap-2">
                       <LogOut className="w-4 h-4" />
                       <span>Logout</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-105"
+                    onClick={() => router.push("/login")}
+                  >
+                    <LogIn className="w-4 h-4" />
+                    <span className="hidden sm:inline text-xs">Login</span>
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="gap-2 bg-gradient-to-r from-accent to-primary hover:from-accent/90 hover:to-primary/90 text-accent-foreground transition-all duration-300 hover:scale-105"
+                    onClick={() => router.push("/signup")}
+                  >
+                    <span className="text-xs">Sign Up</span>
+                  </Button>
+                </div>
               )}
 
               {/* Mobile Menu Button */}

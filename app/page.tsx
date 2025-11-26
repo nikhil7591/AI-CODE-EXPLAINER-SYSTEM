@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { CodeEditor } from "@/components/code-editor"
 import { ResultsPanel } from "@/components/results-panel"
 import { HistoryPanel } from "@/components/history-panel"
@@ -16,6 +17,8 @@ import { AnalyticsDashboard } from "@/components/analytics-dashboard"
 import { FavoritesPanel } from "@/components/favorites-panel"
 import { TemplatesPanel } from "@/components/templates-panel"
 import { ExportSharePanel } from "@/components/export-share-panel"
+import { AuthForm } from "@/components/auth-form"
+import { useUser } from "@/contexts/user-context"
 import { Zap, BarChart3, Star, Brain } from "lucide-react"
 
 interface AnalysisResult {
@@ -35,12 +38,33 @@ interface AnalysisResult {
 }
 
 export default function Home() {
+  const { user } = useUser()
+  const router = useRouter()
   const [result, setResult] = useState<AnalysisResult | null>(null)
   const [loading, setLoading] = useState(false)
   const [currentCode, setCurrentCode] = useState("")
   const [currentLanguage, setCurrentLanguage] = useState("python")
   const [showComparison, setShowComparison] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleAuthSuccess = (userData: { email: string; name: string }) => {
+    // Store user data and refresh page
+    localStorage.setItem("user", JSON.stringify({
+      id: Date.now().toString(),
+      name: userData.name,
+      email: userData.email
+    }))
+    window.location.reload()
+  }
+
+  // Show auth form if user is not logged in
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-card/30 to-background text-foreground flex items-center justify-center p-8">
+        <AuthForm onAuthSuccess={handleAuthSuccess} />
+      </div>
+    )
+  }
 
   const handleAnalyze = async (code: string, language: string) => {
     setCurrentCode(code)
