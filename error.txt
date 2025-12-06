@@ -1,0 +1,47 @@
+Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Uncaught TypeError: Cannot convert undefined or null to object
+    at Object.entries (<anonymous>)
+    at xm (77c438df4594fc4f.js:1:407134)
+    at ay (c317acb9bd897f3b.js:1:63226)
+    at uY (c317acb9bd897f3b.js:1:83499)
+    at oa (c317acb9bd897f3b.js:1:94931)
+    at sc (c317acb9bd897f3b.js:1:137952)
+    at c317acb9bd897f3b.js:1:137797
+    at ss (c317acb9bd897f3b.js:1:137805)
+    at i7 (c317acb9bd897f3b.js:1:133730)
+    at sB (c317acb9bd897f3b.js:1:159457)
+
+
+------------------------------------------------------
+Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Failed to fetch history: Error: Failed to fetch history
+    at a (77c438df4594fc4f.js:1:72699)
+a @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/ai-chat:1  Failed to load resource: the server responded with a status of 404 ()Understand this error
+77c438df4594fc4f.js:1 Chat error: Error: Route not found
+    at u (77c438df4594fc4f.js:1:80758)
+u @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/favorites:1  Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Failed to fetch favorites: Error: Failed to fetch favorites
+    at 77c438df4594fc4f.js:1:91346
+(anonymous) @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/templates?category=algorithms&language=python:1  Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Failed to fetch templates: Error: Failed to fetch templates
+    at 77c438df4594fc4f.js:1:95412
+(anonymous) @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/templates?category=algorithms&language=javascript:1  Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Failed to fetch templates: Error: Failed to fetch templates
+    at 77c438df4594fc4f.js:1:95412
+(anonymous) @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/templates?category=algorithms&language=java:1  Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Failed to fetch templates: Error: Failed to fetch templates
+    at 77c438df4594fc4f.js:1:95412
+(anonymous) @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/templates?category=data-structures&language=java:1  Failed to load resource: the server responded with a status of 501 ()Understand this error
+77c438df4594fc4f.js:1 Failed to fetch templates: Error: Failed to fetch templates
+    at 77c438df4594fc4f.js:1:95412
+(anonymous) @ 77c438df4594fc4f.js:1Understand this error
+codemind-ai-ai-code-explainer-system.onrender.com/api/ai-chat:1  Failed to load resource: the server responded with a status of 404 ()Understand this error
+77c438df4594fc4f.js:1 Chat error: Error: Route not found
+    at u (77c438df4594fc4f.js:1:80758)
+u @ 77c438df4594fc4f.js:1Understand this error
