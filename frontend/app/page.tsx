@@ -64,6 +64,20 @@ export default function Home() {
   }
 
   const handleAnalyze = async (code: string, language: string) => {
+    // Check usage limit before allowing analysis
+    if (user?.email) {
+      try {
+        const usageData = await usageAPI.check(user.email)
+        if (usageData.remaining <= 0) {
+          alert(`Daily limit reached! You've used ${usageData.used}/${usageData.limit} analyses. Try again after ${new Date(usageData.resetTime).toLocaleTimeString()}.`)
+          return
+        }
+      } catch (usageError) {
+        console.error("Failed to check usage:", usageError)
+        // Continue with analysis if usage check fails
+      }
+    }
+
     setCurrentCode(code)
     setCurrentLanguage(language)
     setLoading(true)
